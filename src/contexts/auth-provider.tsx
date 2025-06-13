@@ -193,6 +193,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       toast({ title: "Access Granted", description: "Parent area unlocked." });
       return true;
     } else {
+      console.error(`Failed PIN verification attempt for user: ${userProfile.uid}`);
       toast({ title: "Incorrect PIN", description: "The PIN you entered is incorrect.", variant: "destructive" });
       return false;
     }
@@ -252,3 +253,4 @@ export function AuthProvider({ children }: AuthProviderProps) {
 //   const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 //   return hashHex;
 // }
+
