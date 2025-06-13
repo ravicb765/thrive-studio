@@ -105,29 +105,35 @@ export default function RewardSystemPage() {
           <CardHeader>
             <div className="flex items-center gap-2 mb-1">
                 <ShieldCheck className="h-7 w-7 text-primary" />
-                <CardTitle className="font-headline text-2xl">Admin: Manage Tasks</CardTitle>
+                <CardTitle className="font-headline text-2xl">Admin: Manage & Customize Tasks</CardTitle>
             </div>
             <CardDescription>
-              Caregivers and therapists can create, assign, and manage tasks for users here.
+              Parents and teachers can create custom tasks, choose visual rewards, set task frequency (daily, once, repeatable), and track progress or streaks.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="aspect-video_ rounded-md overflow-hidden mb-4 bg-muted/50">
               <Image
                 src="https://placehold.co/600x300.png"
-                alt="Task management illustration"
+                alt="Task management illustration with customization options"
                 width={600}
                 height={300}
                 className="object-cover w-full h-full"
-                data-ai-hint="planning tasks checklist"
+                data-ai-hint="planning tasks checklist customization"
               />
             </div>
             <p className="mb-4 text-foreground/90">
-              This section will provide tools to add new tasks, set their star values, assign them to specific users (if applicable), and track completion across different profiles.
+              This section will provide tools to:
+              <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                <li>Add new, personalized tasks.</li>
+                <li>Assign star values or link specific visual rewards to tasks.</li>
+                <li>Define how often tasks should appear (e.g., daily, one-time, or repeatable).</li>
+                <li>View progress, including streaks or a calendar view of task completion.</li>
+              </ul>
             </p>
             <Button disabled className="w-full md:w-auto">
               <Edit3 className="mr-2 h-4 w-4" />
-              Create New Task (Coming Soon)
+              Manage Custom Tasks (Coming Soon)
             </Button>
           </CardContent>
         </Card>
