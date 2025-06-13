@@ -4,7 +4,7 @@
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Mountain, LogIn, LogOut, UserCircle } from "lucide-react";
+import { Mountain, LogIn, LogOut, UserCircle, ShieldAlert } from "lucide-react"; // Changed ShieldLock to ShieldAlert
 import { useAuth } from "@/hooks/use-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function AppHeader() {
-  const { user, loading, signInWithGoogle, signOutUser } = useAuth();
+  const { user, userProfile, loading, signInWithGoogle, signOutUser } = useAuth();
 
   return (
     <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 backdrop-blur-sm px-4 md:px-6">
@@ -58,6 +58,14 @@ export function AppHeader() {
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
+              {userProfile?.role === 'parent_teacher' && (
+                <DropdownMenuItem asChild>
+                  <Link href="/settings/security">
+                    <ShieldAlert className="mr-2 h-4 w-4" /> 
+                    <span>Security Settings (PIN)</span>
+                  </Link>
+                </DropdownMenuItem>
+              )}
               <DropdownMenuItem onClick={signOutUser}>
                 <LogOut className="mr-2 h-4 w-4" />
                 <span>Log out</span>

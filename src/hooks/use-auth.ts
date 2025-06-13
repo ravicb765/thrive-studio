@@ -9,9 +9,13 @@ interface UseAuthReturn {
   user: User | null;
   userProfile: UserProfile | null;
   loading: boolean;
+  isParentAreaLocked: boolean;
   signInWithGoogle: () => Promise<void>;
   signOutUser: () => Promise<void>;
-  // Helper for role checking, can be expanded
+  setPin: (newPin: string) => Promise<boolean>;
+  verifyPin: (enteredPin: string) => Promise<boolean>;
+  lockParentArea: () => void;
+  unlockParentArea: () => void;
   hasRole: (role: UserProfile['role']) => boolean;
 }
 
