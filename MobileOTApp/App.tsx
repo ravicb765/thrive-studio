@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -17,6 +16,7 @@ import YogaZoneScreen from './src/screens/YogaZoneScreen';
 import BreathingExercisesScreen from './src/screens/BreathingExercisesScreen';
 import AlliterativeExerciseScreen from './src/screens/AlliterativeExerciseScreen';
 import FunGamesScreen from './src/screens/FunGamesScreen';
+import TherapyReminderScreen from './src/screens/TherapyReminderScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -32,8 +32,10 @@ function TabNavigator() {
             iconName = 'dashboard';
           } else if (route.name === 'OT Activities') {
             iconName = 'psychology';
-          } else if (route.name === 'Scheduler') {
+          } else if (route.name === 'Daily Schedule') {
             iconName = 'schedule';
+          } else if (route.name === 'Therapy') {
+            iconName = 'event';
           } else if (route.name === 'Calm Corner') {
             iconName = 'spa';
           }
@@ -43,11 +45,13 @@ function TabNavigator() {
         tabBarActiveTintColor: '#6366f1',
         tabBarInactiveTintColor: 'gray',
         headerShown: false,
+        tabBarLabelStyle: { fontSize: 10 },
       })}
     >
       <Tab.Screen name="Dashboard" component={DashboardScreen} />
       <Tab.Screen name="OT Activities" component={OTActivitiesScreen} />
-      <Tab.Screen name="Scheduler" component={VisualSchedulerScreen} />
+      <Tab.Screen name="Daily Schedule" component={VisualSchedulerScreen} />
+      <Tab.Screen name="Therapy" component={TherapyReminderScreen} />
       <Tab.Screen name="Calm Corner" component={CalmCornerScreen} />
     </Tab.Navigator>
   );
