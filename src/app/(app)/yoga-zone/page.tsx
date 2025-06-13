@@ -1,5 +1,5 @@
 import { PoseCard } from "@/components/features/yoga-zone/pose-card";
-import { Lotus } from "lucide-react";
+import { Leaf } from "lucide-react";
 
 const yogaPoses = [
   {
@@ -44,7 +44,7 @@ export default function YogaZonePage() {
   return (
     <div className="container mx-auto py-8">
       <header className="mb-10 text-center">
-        <Lotus className="h-16 w-16 text-primary mx-auto mb-4" />
+        <Leaf className="h-16 w-16 text-primary mx-auto mb-4" />
         <h1 className="text-4xl font-bold font-headline text-primary">Yoga Zone</h1>
         <p className="mt-2 text-lg text-foreground/80">
           Discover peace and strength with our guided yoga poses.

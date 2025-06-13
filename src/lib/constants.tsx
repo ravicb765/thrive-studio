@@ -1,5 +1,6 @@
+
 import type { LucideIcon } from 'lucide-react';
-import { LayoutDashboard, Sparkles, CalendarDays, Lotus, Wind, Waves, Puzzle, BookOpenText, Star, ListChecks, Users, BarChart3, UserCog, PackagePlus, Ear, HeartHandshake, Mic2, Brain, Hand } from 'lucide-react';
+import { LayoutDashboard, Sparkles, CalendarDays, Leaf, Wind, Waves, Puzzle, BookOpenText, Star, ListChecks, Users, BarChart3, UserCog, PackagePlus, Ear, HeartHandshake, Mic2, Brain, Hand } from 'lucide-react';
 
 export interface NavItem {
   label: string;
@@ -12,7 +13,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { label: 'Alliterative Exercise', href: '/alliterative-exercise', icon: Sparkles },
   { label: 'Visual Scheduler', href: '/visual-scheduler', icon: CalendarDays },
-  { label: 'Yoga Zone', href: '/yoga-zone', icon: Lotus },
+  { label: 'Yoga Zone', href: '/yoga-zone', icon: Leaf },
   { label: 'Breathing Exercises', href: '/breathing-exercises', icon: Wind },
   { label: 'Calm Corner', href: '/calm-corner', icon: Waves },
   // Future features (can be enabled by removing disabled flag)
@@ -128,7 +129,7 @@ function ShieldCheck(props: ShieldCheckProps): JSX.Element {
 export const FEATURE_CARDS = [
   { title: "Alliterative Exercise", description: "Fun, catchy phrases where movements match words to boost language, memory, and movement.", href: "/alliterative-exercise", icon: Sparkles, dataAiHint: "exercise routine" },
   { title: "Visual Scheduler", description: "Organize daily tasks with First-Then boards and icon-based routines.", href: "/visual-scheduler", icon: CalendarDays, dataAiHint: "schedule planning" },
-  { title: "Yoga Zone", description: "Calming yoga sequences with visual guides and soothing music.", href: "/yoga-zone", icon: Lotus, dataAiHint: "yoga meditation" },
+  { title: "Yoga Zone", description: "Calming yoga sequences with visual guides and soothing music.", href: "/yoga-zone", icon: Leaf, dataAiHint: "yoga meditation" },
   { title: "Breathing Exercises", description: "Regulate anxiety with visual breathing tools and sound cues.", href: "/breathing-exercises", icon: Wind, dataAiHint: "mindfulness calm" },
   { title: "Calm Corner", description: "Relax with calming sounds, gentle animations, and sensory tools.", href: "/calm-corner", icon: Waves, dataAiHint: "relaxation nature" },
 ];
