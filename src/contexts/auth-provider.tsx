@@ -42,7 +42,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
       setLoading(true);
       if (currentUser) {
         setUser(currentUser);
-        // Fetch or create user profile in Firestore
+        // Fetch or create user profile in Firestore.
+        // Note: Firebase services (like Firestore and Auth) use HTTPS for data in transit.
+        // Firestore encrypts data at rest by default.
+        // Data retention policies can be configured on collections (e.g., 'userProfiles')
+        // via TTL (Time-to-Live) policies in the Firebase Console.
         const userDocRef = doc(db, "userProfiles", currentUser.uid);
         const userDocSnap = await getDoc(userDocRef);
 
