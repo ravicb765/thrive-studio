@@ -29,7 +29,7 @@ const ExerciseDetailSchema = z.object({
 });
 
 // Update the main output schema to be an array of these exercises
-export const GenerateExerciseRoutineOutputSchema = z.object({
+const GenerateExerciseRoutineOutputSchema = z.object({
   exercises: z.array(ExerciseDetailSchema)
     .min(1, "At least one exercise should be generated.")
     .describe('A list of generated alliterative exercises. Each exercise includes an alliterative name, a description of the activity, and its key benefit.')
