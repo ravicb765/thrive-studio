@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,7 @@ export default function DashboardPage() {
       <section className="mb-12 text-center">
         <h1 className="text-4xl font-bold font-headline text-primary mb-4">Welcome to Thrive Studio</h1>
         <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-          Explore tools and activities designed to support growth, learning, and well-being in a calm and engaging environment.
+          Dive into a world of fun and engaging activities! Discover tools designed to support growth, learning, and well-being in a calm and playful environment.
         </p>
       </section>
 

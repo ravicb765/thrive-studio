@@ -58,7 +58,7 @@ export default function FunGamesPage() {
         <Gamepad2 className="h-16 w-16 text-primary mx-auto mb-4" />
         <h1 className="text-4xl font-bold font-headline text-primary">Fun & Interactive Games</h1>
         <p className="mt-2 text-lg text-foreground/80 max-w-2xl mx-auto">
-          Dive into a world of exciting games designed to entertain, challenge, and help develop various skills in a playful way!
+          Dive into a visually attractive world of exciting and fun games, designed to entertain, challenge, and help develop various skills in a playful way! Get ready for age-appropriate adventures.
         </p>
       </header>
 
@@ -128,4 +128,3 @@ export default function FunGamesPage() {
     </div>
   );
 }
-

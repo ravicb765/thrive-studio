@@ -77,7 +77,7 @@ export default function RewardSystemPage() {
               <Gift className="h-7 w-7 text-accent" />
               <CardTitle className="font-headline text-2xl">Rewards Store</CardTitle>
             </div>
-            <CardDescription>Spend your stars on fun items, avatar upgrades, new sounds, or special parent-created rewards!</CardDescription>
+            <CardDescription>Spend your stars on exciting and fun visual rewards! Unlock avatar upgrades, new sounds, cool animations, or special parent-created treats!</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
             <div className="flex items-center justify-between p-3 bg-card-foreground/5 rounded-md">
@@ -179,4 +179,3 @@ export default function RewardSystemPage() {
     </div>
   );
 }
-
