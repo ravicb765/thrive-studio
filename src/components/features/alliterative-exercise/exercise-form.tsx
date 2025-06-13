@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -63,7 +64,7 @@ export function ExerciseForm() {
             <CardTitle className="font-headline text-2xl">Create Your Routine</CardTitle>
           </div>
           <CardDescription>
-            Enter a target word or sound, and we&apos;ll magically craft an alliterative exercise routine for you! Perfect for boosting language, memory, and movement skills.
+            Enter a target word or sound, and we&apos;ll magically craft an alliterative exercise routine for you! Each exercise will include a name, activity, and its benefits. Perfect for boosting language, memory, and movement skills.
           </CardDescription>
         </CardHeader>
         <Form {...form}>
@@ -112,16 +113,22 @@ export function ExerciseForm() {
         </Form>
       </Card>
 
-      {routine && (
+      {routine && routine.exercises && routine.exercises.length > 0 && (
         <Card className="shadow-lg animate-in fade-in duration-500">
           <CardHeader>
-            <CardTitle className="font-headline text-2xl">Your Custom Routine: &quot;{form.getValues("targetWord")}&quot;</CardTitle>
+            <CardTitle className="font-headline text-2xl">Your Custom Routine for &quot;{form.getValues("targetWord")}&quot;</CardTitle>
             <CardDescription>Get ready to move and groove with these alliterative actions!</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="prose prose-lg max-w-none dark:prose-invert whitespace-pre-line bg-muted/30 p-4 rounded-md">
-                {routine.routine}
-            </div>
+            <ul className="space-y-4 list-none p-0">
+              {routine.exercises.map((exercise, index) => (
+                <li key={index} className="p-4 border rounded-lg shadow-sm bg-card">
+                  <h4 className="font-semibold text-xl text-primary mb-1.5">{exercise.name}</h4>
+                  <p className="text-foreground/90 mb-1"><strong className="font-medium">Activity:</strong> {exercise.activity}</p>
+                  <p className="text-foreground/80"><strong className="font-medium">Benefit:</strong> {exercise.benefit}</p>
+                </li>
+              ))}
+            </ul>
           </CardContent>
         </Card>
       )}
