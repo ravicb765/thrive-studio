@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -16,8 +17,18 @@ interface Task {
 }
 
 export function SchedulerBoard() {
-  const [firstTask, setFirstTask] = useState<Task>({ id: "first", text: "", icon: "https://placehold.co/100x100.png", dataAiHint: "task schedule" });
-  const [thenTask, setThenTask] = useState<Task>({ id: "then", text: "", icon: "https://placehold.co/100x100.png", dataAiHint: "task complete" });
+  const [firstTask, setFirstTask] = useState<Task>({
+    id: "first",
+    text: "Wake up at 6:00 AM",
+    icon: "https://placehold.co/100x100.png",
+    dataAiHint: "alarm clock morning"
+  });
+  const [thenTask, setThenTask] = useState<Task>({
+    id: "then",
+    text: "Bathroom routine (toilet, brush teeth)",
+    icon: "https://placehold.co/100x100.png",
+    dataAiHint: "toothbrush toilet"
+  });
 
   const handleTextChange = (taskId: string, newText: string) => {
     if (taskId === "first") {
@@ -34,7 +45,7 @@ export function SchedulerBoard() {
     <Card className="w-full max-w-3xl mx-auto shadow-xl">
       <CardHeader className="text-center">
         <CardTitle className="font-headline text-3xl text-primary">My First-Then Board</CardTitle>
-        <CardDescription>Let&apos;s plan our activities step-by-step!</CardDescription>
+        <CardDescription>Let&apos;s plan our activities step-by-step! Here&apos;s an example to get you started.</CardDescription>
       </CardHeader>
       <CardContent className="p-6">
         <div className="flex flex-col md:flex-row items-center justify-around gap-6 md:gap-8">
@@ -99,3 +110,4 @@ export function SchedulerBoard() {
     </Card>
   );
 }
+
