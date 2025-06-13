@@ -1,8 +1,9 @@
+
 "use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Mountain } from "lucide-react";
+import { Mountain, Settings } from "lucide-react"; // Changed SettingsIcon to Settings
 import {
   Sidebar,
   SidebarHeader,
@@ -16,16 +17,28 @@ import {
 import { NAV_ITEMS, type NavItem } from "@/lib/constants.tsx";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/use-auth"; // Import useAuth
 
 export function AppSidebar() {
   const pathname = usePathname();
   const { setOpenMobile } = useSidebar();
+  const { userProfile, loading } = useAuth(); // Get userProfile and loading state
 
   const handleLinkClick = () => {
     if (window.innerWidth < 768) { // md breakpoint
       setOpenMobile(false);
     }
   };
+  
+  const isParentTeacher = userProfile?.role === 'parent_teacher';
+
+  // Filter nav items based on role
+  const visibleNavItems = NAV_ITEMS.filter(item => {
+    if (item.href === '/caregiver-admin' || item.href === '/therapist-portal') {
+      return isParentTeacher;
+    }
+    return true; // Show all other items by default
+  });
   
   return (
     <Sidebar collapsible="icon">
@@ -37,28 +50,33 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent className="p-2">
         <SidebarMenu>
-          {NAV_ITEMS.map((item: NavItem) => (
-            <SidebarMenuItem key={item.label} className={cn(item.disabled && "opacity-50 pointer-events-none")}>
-              <SidebarMenuButton
-                asChild
-                isActive={pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href))}
-                tooltip={item.label}
-                className="justify-start"
-                disabled={item.disabled}
-              >
-                <Link href={item.disabled ? "#" : item.href} onClick={handleLinkClick}>
-                  <item.icon className="h-5 w-5" />
-                  <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
+          {loading ? (
+            // You can add skeleton loaders here if you want
+            <p className="p-2 text-sm text-sidebar-foreground/70 group-data-[collapsible=icon]:hidden">Loading menu...</p>
+          ) : (
+            visibleNavItems.map((item: NavItem) => (
+              <SidebarMenuItem key={item.label} className={cn(item.disabled && "opacity-50 pointer-events-none")}>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href))}
+                  tooltip={item.label}
+                  className="justify-start"
+                  disabled={item.disabled}
+                >
+                  <Link href={item.disabled ? "#" : item.href} onClick={handleLinkClick}>
+                    <item.icon className="h-5 w-5" />
+                    <span className="group-data-[collapsible=icon]:hidden">{item.label}</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            ))
+          )}
         </SidebarMenu>
       </SidebarContent>
       <SidebarFooter className="mt-auto border-t border-sidebar-border p-2">
         {/* Footer content if any, e.g. settings or user profile link */}
          <Button variant="ghost" className="w-full justify-start group-data-[collapsible=icon]:justify-center">
-            <SettingsIcon className="h-5 w-5" />
+            <Settings className="h-5 w-5" />
            <span className="group-data-[collapsible=icon]:hidden ml-2">Settings</span>
          </Button>
       </SidebarFooter>
@@ -66,7 +84,8 @@ export function AppSidebar() {
   );
 }
 
-
+// Keeping SettingsIcon definition in case it's used elsewhere, 
+// but lucide-react's Settings is preferred.
 function SettingsIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg

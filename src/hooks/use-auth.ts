@@ -2,12 +2,28 @@
 "use client";
 
 import { useContext } from "react";
-import { AuthContext } from "@/contexts/auth-provider";
+import { AuthContext, type UserProfile } from "@/contexts/auth-provider";
+import type { User } from "firebase/auth";
 
-export function useAuth() {
+interface UseAuthReturn {
+  user: User | null;
+  userProfile: UserProfile | null;
+  loading: boolean;
+  signInWithGoogle: () => Promise<void>;
+  signOutUser: () => Promise<void>;
+  // Helper for role checking, can be expanded
+  hasRole: (role: UserProfile['role']) => boolean;
+}
+
+export function useAuth(): UseAuthReturn {
   const context = useContext(AuthContext);
   if (context === undefined) {
     throw new Error("useAuth must be used within an AuthProvider");
   }
-  return context;
+  
+  const hasRole = (roleToCheck: UserProfile['role']): boolean => {
+    return !!context.userProfile && context.userProfile.role === roleToCheck;
+  };
+
+  return { ...context, hasRole };
 }
