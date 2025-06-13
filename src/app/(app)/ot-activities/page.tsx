@@ -1,22 +1,14 @@
 
 "use client";
 
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
   ClipboardList, HeartHandshake, Hand, PersonStanding, Feather, Eye, ListChecks, 
-  Settings, Zap, Edit3, CheckSquare, BarChart2, Tv, Film, SlidersHorizontal, UserCog, Utensils, SmilePlus, Puzzle, Rocket
-} from "lucide-react"; // Added Utensils, SmilePlus, Puzzle, Rocket
+  Settings, Zap, Edit3, CheckSquare, BarChart2, Tv, Film, SlidersHorizontal, UserCog, Utensils, SmilePlus, Puzzle, Rocket, Tooth
+} from "lucide-react"; 
 import { useAuth } from "@/hooks/use-auth";
 import Image from "next/image";
-
-// Helper for inline SVGs if no direct Lucide icon fits perfectly
-const ScissorsIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/>
-  </svg>
-);
-
 
 const otTaskCategories = [
   {
@@ -31,7 +23,17 @@ const otTaskCategories = [
       "Wipe face after eating: Visual cue (e.g., picture of clean face) and routine step.",
       "Open lunchbox / snack containers: Practice fine motor skills for independence."
     ],
-    dataAiHint: "hygiene routine checklist"
+    dataAiHint: "hygiene routine checklist",
+    interactiveExample: {
+      taskName: "Brush Teeth",
+      mainImage: { src: "https://placehold.co/300x180.png", alt: "Child brushing teeth", dataAiHint: "child brushing" },
+      steps: [
+        { label: "Get Toothbrush", image: { src: "https://placehold.co/120x90.png", alt: "Hand getting toothbrush", dataAiHint: "toothbrush hand" } },
+        { label: "Apply Toothpaste", image: { src: "https://placehold.co/120x90.png", alt: "Applying toothpaste", dataAiHint: "toothpaste apply" } },
+        { label: "Brush", image: { src: "https://placehold.co/120x90.png", alt: "Child brushing teeth step", dataAiHint: "brushing teeth" } },
+        { label: "Rinse", image: { src: "https://placehold.co/120x90.png", alt: "Glass of water for rinsing", dataAiHint: "water rinse" } },
+      ]
+    }
   },
   {
     title: "Fine Motor Skills",
@@ -116,7 +118,7 @@ export default function OTActivitiesPage() {
   return (
     <div className="container mx-auto py-8">
       <header className="mb-10 text-center">
-        <Rocket className="h-16 w-16 text-primary mx-auto mb-4" /> {/* Changed icon */}
+        <Rocket className="h-16 w-16 text-primary mx-auto mb-4" />
         <h1 className="text-4xl font-bold font-headline text-primary">Occupational Therapy Skill Builders</h1>
         <p className="mt-2 text-lg text-foreground/80 max-w-3xl mx-auto">
           Explore a variety of Occupational Therapy (OT) tasks designed to build independence in daily living, enhance motor skills, support sensory regulation, and improve cognitive abilities for thriving in everyday life.
@@ -153,12 +155,53 @@ export default function OTActivitiesPage() {
               <p className="text-xs text-muted-foreground mt-2">
                 Interactive guides, video models, and progress tracking coming soon!
               </p>
+
+              {category.interactiveExample && (
+                <div className="mt-6 border-t pt-4">
+                  <h4 className="font-semibold text-md text-primary mb-3 text-center flex items-center justify-center gap-2">
+                    <Tooth className="h-5 w-5" /> 
+                    Interactive Example: {category.interactiveExample.taskName}
+                  </h4>
+                  <div className="bg-card p-4 rounded-lg shadow-md border border-border">
+                    <div className="mb-3 rounded-md overflow-hidden border">
+                      <Image
+                        src={category.interactiveExample.mainImage.src}
+                        alt={category.interactiveExample.mainImage.alt}
+                        width={300}
+                        height={180}
+                        className="object-cover w-full h-auto"
+                        data-ai-hint={category.interactiveExample.mainImage.dataAiHint}
+                      />
+                    </div>
+                    <h5 className="text-lg font-semibold text-center mb-3 text-foreground/90">{category.interactiveExample.taskName}</h5>
+                    <div className="grid grid-cols-2 gap-3 mb-4">
+                      {category.interactiveExample.steps.map((step, idx) => (
+                        <div key={idx} className="flex flex-col items-center p-2 border rounded-md bg-background shadow-sm">
+                          <div className="w-full h-20 relative rounded-md overflow-hidden mb-1.5 border">
+                             <Image
+                                src={step.image.src}
+                                alt={step.image.alt}
+                                layout="fill"
+                                objectFit="cover"
+                                data-ai-hint={step.image.dataAiHint}
+                              />
+                          </div>
+                          <p className="text-xs text-center text-foreground/80">{step.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <Button disabled className="w-full bg-green-500 hover:bg-green-600 text-white">
+                      <CheckSquare className="mr-2 h-5 w-5" /> DONE
+                    </Button>
+                  </div>
+                </div>
+              )}
             </CardContent>
-            <div className="p-4 pt-0">
+            <CardFooter className="p-4 pt-0 mt-auto">
               <Button disabled className="w-full">
                 Explore {category.title.split(" ")[0]} Tasks (Coming Soon)
               </Button>
-            </div>
+            </CardFooter>
           </Card>
         ))}
       </div>
@@ -228,3 +271,4 @@ export default function OTActivitiesPage() {
     </div>
   );
 }
+
