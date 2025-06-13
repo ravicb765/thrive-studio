@@ -5,75 +5,97 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { Button } from "@/components/ui/button";
 import { 
   ClipboardList, HeartHandshake, Hand, PersonStanding, Feather, Eye, ListChecks, 
-  Settings, Zap, Edit3, CheckSquare, BarChart2, Tv, Film, SlidersHorizontal, UserCog
-} from "lucide-react";
+  Settings, Zap, Edit3, CheckSquare, BarChart2, Tv, Film, SlidersHorizontal, UserCog, Utensils, SmilePlus, Puzzle, Rocket
+} from "lucide-react"; // Added Utensils, SmilePlus, Puzzle, Rocket
 import { useAuth } from "@/hooks/use-auth";
 import Image from "next/image";
+
+// Helper for inline SVGs if no direct Lucide icon fits perfectly
+const ScissorsIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/>
+  </svg>
+);
+
 
 const otTaskCategories = [
   {
     title: "Self-Care / Activities of Daily Living (ADLs)",
     icon: HeartHandshake,
-    goal: "Follow visual sequences for daily routines like brushing teeth, washing hands, and dressing.",
+    goal: "Follow visual sequences for daily routines like brushing teeth, washing hands, dressing, and eating.",
     examples: [
-      "Brush teeth (with steps): get toothbrush → apply paste → brush → rinse.",
-      "Wash hands: Wet → Soap → Rub → Rinse → Dry (animated guide).",
-      "Put on socks/shoes: Step-by-step dressing practice."
+      "Brush teeth: Visual steps for entire sequence (get brush, paste, brush all areas, rinse).",
+      "Wash hands: Follow animated guide for Wet → Soap → Rub → Rinse → Dry.",
+      "Get dressed: Step-by-step for putting on socks, shoes, shirt, pants.",
+      "Use utensils: Practice holding and using spoon/fork with prompts.",
+      "Wipe face after eating: Visual cue (e.g., picture of clean face) and routine step.",
+      "Open lunchbox / snack containers: Practice fine motor skills for independence."
     ],
     dataAiHint: "hygiene routine checklist"
   },
   {
     title: "Fine Motor Skills",
     icon: Hand,
-    goal: "Develop hand strength and coordination through activities like tracing, buttoning, and cutting.",
+    goal: "Develop hand strength, dexterity, and coordination for tasks like writing, buttoning, and cutting.",
     examples: [
-      "Trace lines/shapes using finger or stylus on screen.",
-      "Button a shirt (visual guide).",
-      "Open and close zipper (matching game or real-world practice)."
+      "Trace lines, shapes, and letters using finger or stylus on screen.",
+      "Button a shirt or fasten snaps/buckles (visual guide & practice).",
+      "Open and close zippers on clothing or bags.",
+      "Cut paper with child-safe scissors along lines (simulated or parent-guided).",
+      "Sort small objects: Match coins, buttons, or beads by size/color to develop pinch grip."
     ],
     dataAiHint: "tracing drawing handcraft"
   },
   {
     title: "Gross Motor Skills",
     icon: PersonStanding,
-    goal: "Enhance body awareness, balance, and coordination with fun movements and poses.",
+    goal: "Enhance body awareness, balance, coordination, and strength with fun movements and poses.",
     examples: [
-      "Jump 5 times with music beat.",
-      "Balance on one foot (use visual timer).",
-      "Animal walks (bear, crab) - follow video."
+      "Jump 5-10 times, perhaps following a music beat or visual cue.",
+      "Balance on one foot for 5-10 seconds (use visual timer or 'freeze dance').",
+      "Animal walks: Bear walk, crab walk, frog jump - follow video/animation.",
+      "Simple yoga poses: Tree pose, Downward Dog (hold for 10-15 seconds with fun graphic).",
+      "Navigate an obstacle course: Crawl under/over items (e.g., pillows, couch cushions)."
     ],
     dataAiHint: "jumping balance exercise"
   },
   {
     title: "Sensory Regulation Activities",
-    icon: Feather, // Using Feather for gentle sensory, Waves could also work
-    goal: "Engage in calming or alerting sensory inputs to help manage tension and improve focus.",
+    icon: Feather, 
+    goal: "Engage in calming or alerting sensory inputs to help manage energy levels, tension, and improve focus.",
     examples: [
-      "Press soft ball 10 times.",
-      "Play with putty or dough.",
-      "Listen to calm sound (auditory sensory break)."
+      "Squeeze a soft ball or stress toy 10 times.",
+      "Roll a therapy ball over legs/back (with assistance) for deep pressure.",
+      "Play with putty, dough, or kinetic sand.",
+      "Deep pressure hugs (e.g., 'bear hug' from parent or self-hug).",
+      "Wall push-ups or chair push-ups for proprioceptive input.",
+      "Listen to calming sounds (nature, soft music) or white noise for an auditory break."
     ],
     dataAiHint: "sensory play calm"
   },
   {
     title: "Visual Perception & Cognitive OT Tasks",
     icon: Eye,
-    goal: "Strengthen visual processing skills like matching, sorting, and pattern recognition.",
+    goal: "Strengthen visual processing skills like matching, sorting, pattern recognition, and spatial awareness.",
     examples: [
-      "Match shape to outline (visual matching game).",
-      "Find the missing puzzle piece.",
-      "Sort objects by size (visual discrimination)."
+      "Match shape to its outline or a matching picture (visual matching game).",
+      "Find the missing piece in a simple visual puzzle (visual closure).",
+      "Sort objects by size, color, or category (visual discrimination).",
+      "Copy a simple block pattern or LEGO construction (visual-motor integration).",
+      "Left vs. right hand tapping/pointing games (bilateral coordination)."
     ],
     dataAiHint: "puzzle shapes matching"
   },
   {
     title: "Executive Function & Daily Routines",
     icon: ListChecks,
-    goal: "Improve planning, sequencing, impulse control, and organization for daily tasks.",
+    goal: "Improve planning, sequencing, impulse control, working memory, and organization for daily tasks.",
     examples: [
-      "Complete a morning checklist: Wake up → toilet → dress → breakfast.",
-      "Pack school bag with 3 items.",
-      "Wait 1 minute with timer (impulse control)."
+      "Complete a morning/evening checklist: Visual schedule for wake up → toilet → dress → breakfast.",
+      "Pack a (pretend) school bag with 3-4 items from a visual list.",
+      "Wait for 1-2 minutes with a visual timer before a preferred activity (impulse control).",
+      "Clean up after play: Follow a visual cue card for putting specific toys away.",
+      "Follow 2-3 step instructions: e.g., 'Get your book, sit on the mat, and open to the first page.'"
     ],
     dataAiHint: "planning checklist routine"
   }
@@ -94,10 +116,10 @@ export default function OTActivitiesPage() {
   return (
     <div className="container mx-auto py-8">
       <header className="mb-10 text-center">
-        <ClipboardList className="h-16 w-16 text-primary mx-auto mb-4" />
-        <h1 className="text-4xl font-bold font-headline text-primary">Occupational Therapy & Daily Skills</h1>
+        <Rocket className="h-16 w-16 text-primary mx-auto mb-4" /> {/* Changed icon */}
+        <h1 className="text-4xl font-bold font-headline text-primary">Occupational Therapy Skill Builders</h1>
         <p className="mt-2 text-lg text-foreground/80 max-w-3xl mx-auto">
-          Explore a variety of Occupational Therapy (OT) tasks designed to build independence in daily living, enhance motor skills, support sensory regulation, and improve cognitive abilities.
+          Explore a variety of Occupational Therapy (OT) tasks designed to build independence in daily living, enhance motor skills, support sensory regulation, and improve cognitive abilities for thriving in everyday life.
         </p>
       </header>
 
@@ -122,7 +144,8 @@ export default function OTActivitiesPage() {
                   data-ai-hint={category.dataAiHint}
                 />
               </div>
-              <ul className="list-disc list-inside space-y-1 text-sm text-foreground/90 pl-4">
+              <p className="text-sm font-semibold text-foreground/90">Example Activities:</p>
+              <ul className="list-disc list-inside space-y-1 text-sm text-foreground/80 pl-4">
                 {category.examples.map((example, idx) => (
                   <li key={idx}>{example}</li>
                 ))}
