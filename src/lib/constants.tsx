@@ -1,6 +1,6 @@
 
 import type { LucideIcon } from 'lucide-react';
-import { LayoutDashboard, Sparkles, CalendarDays, Leaf, Wind, Waves, Puzzle, BookOpenText, Star, ListChecks, Users, BarChart3, UserCog, PackagePlus, Ear, HeartHandshake, Mic2, Brain, Hand, Smile, Music, ShieldAlert, Settings2 } from 'lucide-react'; // Added Smile, Music, ShieldAlert, Settings2 as potential better icons
+import { LayoutDashboard, Sparkles, CalendarDays, Leaf, Wind, Waves, Puzzle, BookOpenText, Star, ListChecks, Users, BarChart3, UserCog, PackagePlus, Ear, HeartHandshake, Mic2, Brain, Hand, Smile, Music, ShieldAlert, Settings2, ClipboardList, Activity } from 'lucide-react'; // Added ClipboardList, Activity
 
 export interface NavItem {
   label: string;
@@ -20,15 +20,16 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Calm Corner', href: '/calm-corner', icon: Waves },
   { label: 'Reward System', href: '/reward-system', icon: Star, disabled: false },
   { label: 'Articulation Games', href: '/articulation-games', icon: Puzzle, disabled: false },
+  { label: 'OT Activities', href: '/ot-activities', icon: ClipboardList, disabled: false },
   // Future features (can be enabled by removing disabled flag)
   { label: 'Vocabulary Builder', href: '/vocabulary-builder', icon: BookOpenText, disabled: true },
-  { label: 'Fine Motor Games', href: '/fine-motor-games', icon: Hand, disabled: true },
-  { label: 'Self-Care Checklist', href: '/self-care-checklist', icon: ListChecks, disabled: true },
+  { label: 'Fine Motor Games', href: '/fine-motor-games', icon: Hand, disabled: true }, // This is a general one, OT Activities page is more specific.
+  { label: 'Self-Care Checklist', href: '/self-care-checklist', icon: ListChecks, disabled: true }, // Also covered in OT Activities page.
   { label: 'Basic AAC Board', href: '/aac-board', icon: Mic2, disabled: true },
   { label: 'Social Stories', href: '/social-stories', icon: Users, disabled: true },
-  { label: 'Emotion Selector', href: '/emotion-selector', icon: Smile, disabled: true }, // Changed from custom SmilePlus
-  { label: 'Dance Time', href: '/dance-time', icon: Music, disabled: true }, // Changed from custom Music2
-  { label: 'Expressing Pain', href: '/expressing-pain', icon: HeartHandshake, disabled: true }, // Changed from custom PlusCircle
+  { label: 'Emotion Selector', href: '/emotion-selector', icon: Smile, disabled: true },
+  { label: 'Dance Time', href: '/dance-time', icon: Music, disabled: true },
+  { label: 'Expressing Pain', href: '/expressing-pain', icon: HeartHandshake, disabled: true },
   { label: 'Behavior Tracker', href: '/behavior-tracker', icon: Brain, disabled: true },
   { label: 'Progress Dashboard', href: '/progress-dashboard', icon: BarChart3, disabled: true },
   // Role-restricted items - 'disabled' flag removed, visibility controlled by role in sidebar
@@ -36,9 +37,6 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Therapist Portal', href: '/therapist-portal', icon: Settings2 },
   { label: 'Content Packs', href: '/content-packs', icon: PackagePlus, disabled: true },
 ];
-
-// Removed custom SVG components as lucide-react provides similar ones.
-// If specific custom icons are absolutely needed, they can be re-added.
 
 export const FEATURE_CARDS = [
   { title: "Alliterative Exercise", description: "Fun, catchy phrases where movements match words to boost language, memory, and movement.", href: "/alliterative-exercise", icon: Sparkles, dataAiHint: "exercise routine" },
@@ -48,6 +46,6 @@ export const FEATURE_CARDS = [
   { title: "Calm Corner", description: "Relax with calming sounds, gentle animations, and sensory tools.", href: "/calm-corner", icon: Waves, dataAiHint: "relaxation nature" },
   { title: "Reward System", description: "Encourage positive behaviors and task completion with stars and fun rewards.", href: "/reward-system", icon: Star, dataAiHint: "achievement stars" },
   { title: "Articulation Games", description: "Practice speech sounds and build skills with fun, interactive ABA-based tasks.", href: "/articulation-games", icon: Puzzle, dataAiHint: "speech therapy games" },
+  { title: "OT Activities", description: "Develop daily living, motor, and sensory skills with guided OT tasks.", href: "/ot-activities", icon: ClipboardList, dataAiHint: "therapy daily-living" },
   // Add other active features here if they should appear on the dashboard
 ];
-
