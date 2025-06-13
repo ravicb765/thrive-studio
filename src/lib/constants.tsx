@@ -1,6 +1,6 @@
 
 import type { LucideIcon } from 'lucide-react';
-import { LayoutDashboard, Sparkles, CalendarDays, Leaf, Wind, Waves, Puzzle, BookOpenText, Star, ListChecks, Users, BarChart3, UserCog, PackagePlus, Ear, HeartHandshake, Mic2, Brain, Hand, Smile, Music, ShieldAlert, Settings2, ClipboardList, Activity } from 'lucide-react'; // Added ClipboardList, Activity
+import { LayoutDashboard, Sparkles, CalendarDays, Leaf, Wind, Waves, Puzzle, BookOpenText, Star, ListChecks, Users, BarChart3, UserCog, PackagePlus, Ear, HeartHandshake, Mic2, Brain, Hand, Smile, Music, ShieldAlert, Settings2, ClipboardList, Activity, Gamepad2, Copy, Apple, ToyBrick, Search, Palette } from 'lucide-react'; // Added Gamepad2, Copy, Apple, ToyBrick, Search, Palette
 
 export interface NavItem {
   label: string;
@@ -21,6 +21,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Reward System', href: '/reward-system', icon: Star, disabled: false },
   { label: 'Articulation Games', href: '/articulation-games', icon: Puzzle, disabled: false },
   { label: 'OT Activities', href: '/ot-activities', icon: ClipboardList, disabled: false },
+  { label: 'Fun Games', href: '/fun-games', icon: Gamepad2, disabled: false },
   // Future features (can be enabled by removing disabled flag)
   { label: 'Vocabulary Builder', href: '/vocabulary-builder', icon: BookOpenText, disabled: true },
   { label: 'Fine Motor Games', href: '/fine-motor-games', icon: Hand, disabled: true }, // This is a general one, OT Activities page is more specific.
@@ -47,5 +48,11 @@ export const FEATURE_CARDS = [
   { title: "Reward System", description: "Encourage positive behaviors and task completion with stars and fun rewards.", href: "/reward-system", icon: Star, dataAiHint: "achievement stars" },
   { title: "Articulation Games", description: "Practice speech sounds and build skills with fun, interactive ABA-based tasks.", href: "/articulation-games", icon: Puzzle, dataAiHint: "speech therapy games" },
   { title: "OT Activities", description: "Develop daily living, motor, and sensory skills with guided OT tasks.", href: "/ot-activities", icon: ClipboardList, dataAiHint: "therapy daily-living" },
+  { title: "Fun Games", description: "A collection of interactive games for entertainment and skill development.", href: "/fun-games", icon: Gamepad2, dataAiHint: "kids games interactive" },
   // Add other active features here if they should appear on the dashboard
 ];
+
+// Re-exporting icons used in FEATURE_CARDS if they are not directly from NAV_ITEMS to avoid type errors with conditional icon usage.
+// This is not strictly necessary if all icons are directly in NAV_ITEMS and FEATURE_CARDS references them.
+// However, ensuring icons like 'Gamepad2' used directly in FEATURE_CARDS are part of an export helps if there's any indirection.
+export { Gamepad2, Copy, Apple, ToyBrick, Search, Palette, Brain as BrainIcon }; // Added Brain as BrainIcon for Memory Match
