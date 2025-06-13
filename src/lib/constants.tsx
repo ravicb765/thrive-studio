@@ -18,10 +18,10 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Yoga Zone', href: '/yoga-zone', icon: Leaf },
   { label: 'Breathing Exercises', href: '/breathing-exercises', icon: Wind },
   { label: 'Calm Corner', href: '/calm-corner', icon: Waves },
+  { label: 'Reward System', href: '/reward-system', icon: Star, disabled: false },
   // Future features (can be enabled by removing disabled flag)
   { label: 'Articulation Games', href: '/articulation-games', icon: Puzzle, disabled: true },
   { label: 'Vocabulary Builder', href: '/vocabulary-builder', icon: BookOpenText, disabled: true },
-  { label: 'Reward System', href: '/reward-system', icon: Star, disabled: true },
   { label: 'Fine Motor Games', href: '/fine-motor-games', icon: Hand, disabled: true },
   { label: 'Self-Care Checklist', href: '/self-care-checklist', icon: ListChecks, disabled: true },
   { label: 'Basic AAC Board', href: '/aac-board', icon: Mic2, disabled: true },
@@ -32,8 +32,8 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Behavior Tracker', href: '/behavior-tracker', icon: Brain, disabled: true },
   { label: 'Progress Dashboard', href: '/progress-dashboard', icon: BarChart3, disabled: true },
   // Role-restricted items - 'disabled' flag removed, visibility controlled by role in sidebar
-  { label: 'Caregiver Admin', href: '/caregiver-admin', icon: ShieldAlert }, 
-  { label: 'Therapist Portal', href: '/therapist-portal', icon: Settings2 }, 
+  { label: 'Caregiver Admin', href: '/caregiver-admin', icon: ShieldAlert },
+  { label: 'Therapist Portal', href: '/therapist-portal', icon: Settings2 },
   { label: 'Content Packs', href: '/content-packs', icon: PackagePlus, disabled: true },
 ];
 
@@ -46,5 +46,7 @@ export const FEATURE_CARDS = [
   { title: "Yoga Zone", description: "Calming yoga sequences with visual guides and soothing music.", href: "/yoga-zone", icon: Leaf, dataAiHint: "yoga meditation" },
   { title: "Breathing Exercises", description: "Regulate anxiety with visual breathing tools and sound cues.", href: "/breathing-exercises", icon: Wind, dataAiHint: "mindfulness calm" },
   { title: "Calm Corner", description: "Relax with calming sounds, gentle animations, and sensory tools.", href: "/calm-corner", icon: Waves, dataAiHint: "relaxation nature" },
+  { title: "Reward System", description: "Encourage positive behaviors and task completion with stars and fun rewards.", href: "/reward-system", icon: Star, dataAiHint: "achievement stars" },
   // Add other active features here if they should appear on the dashboard
 ];
+
