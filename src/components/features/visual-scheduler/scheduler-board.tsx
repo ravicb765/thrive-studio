@@ -45,7 +45,7 @@ export function SchedulerBoard() {
     <Card className="w-full max-w-3xl mx-auto shadow-xl">
       <CardHeader className="text-center">
         <CardTitle className="font-headline text-3xl text-primary">My First-Then Board</CardTitle>
-        <CardDescription>Let&apos;s plan our activities step-by-step! Here&apos;s an example to get you started.</CardDescription>
+        <CardDescription>Break down your activities into simple steps. Here's an example for starting the day!</CardDescription>
       </CardHeader>
       <CardContent className="p-6">
         <div className="flex flex-col md:flex-row items-center justify-around gap-6 md:gap-8">
@@ -110,4 +110,3 @@ export function SchedulerBoard() {
     </Card>
   );
 }
-
