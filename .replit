@@ -10,3 +10,15 @@ run = ["sh", "-c", "npm run dev"]
 [[ports]]
 localPort = 9002
 externalPort = 80
+
+[workflows]
+runButton = "Start Mobile Development"
+
+[[workflows.workflow]]
+name = "Start Mobile Development"
+author = 43792320
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd MobileOTApp && npm install && npm start"
