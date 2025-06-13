@@ -16,6 +16,7 @@ import CalmCornerScreen from './src/screens/CalmCornerScreen';
 import YogaZoneScreen from './src/screens/YogaZoneScreen';
 import BreathingExercisesScreen from './src/screens/BreathingExercisesScreen';
 import AlliterativeExerciseScreen from './src/screens/AlliterativeExerciseScreen';
+import FunGamesScreen from './src/screens/FunGamesScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -66,6 +67,7 @@ export default function App() {
             <Stack.Screen name="Yoga Zone" component={YogaZoneScreen} />
             <Stack.Screen name="Breathing Exercises" component={BreathingExercisesScreen} />
             <Stack.Screen name="Alliterative Exercise" component={AlliterativeExerciseScreen} />
+            <Stack.Screen name="Fun Games" component={FunGamesScreen} />
           </Stack.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />
