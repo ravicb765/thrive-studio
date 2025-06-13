@@ -1,4 +1,3 @@
-
 {
   "expo": {
     "name": "OT Skills Mobile",
@@ -43,6 +42,14 @@
     "plugins": [
       "expo-router"
     ],
-    "scheme": "ot-skills-mobile"
+    "scheme": "ot-skills-mobile",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "b4f7f2d8-6614-4462-be18-a2d55bb43477"
+      }
+    }
   }
 }
