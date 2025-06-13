@@ -19,8 +19,8 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Breathing Exercises', href: '/breathing-exercises', icon: Wind },
   { label: 'Calm Corner', href: '/calm-corner', icon: Waves },
   { label: 'Reward System', href: '/reward-system', icon: Star, disabled: false },
+  { label: 'Articulation Games', href: '/articulation-games', icon: Puzzle, disabled: false },
   // Future features (can be enabled by removing disabled flag)
-  { label: 'Articulation Games', href: '/articulation-games', icon: Puzzle, disabled: true },
   { label: 'Vocabulary Builder', href: '/vocabulary-builder', icon: BookOpenText, disabled: true },
   { label: 'Fine Motor Games', href: '/fine-motor-games', icon: Hand, disabled: true },
   { label: 'Self-Care Checklist', href: '/self-care-checklist', icon: ListChecks, disabled: true },
@@ -47,6 +47,7 @@ export const FEATURE_CARDS = [
   { title: "Breathing Exercises", description: "Regulate anxiety with visual breathing tools and sound cues.", href: "/breathing-exercises", icon: Wind, dataAiHint: "mindfulness calm" },
   { title: "Calm Corner", description: "Relax with calming sounds, gentle animations, and sensory tools.", href: "/calm-corner", icon: Waves, dataAiHint: "relaxation nature" },
   { title: "Reward System", description: "Encourage positive behaviors and task completion with stars and fun rewards.", href: "/reward-system", icon: Star, dataAiHint: "achievement stars" },
+  { title: "Articulation Games", description: "Practice speech sounds and build skills with fun, interactive ABA-based tasks.", href: "/articulation-games", icon: Puzzle, dataAiHint: "speech therapy games" },
   // Add other active features here if they should appear on the dashboard
 ];
 
